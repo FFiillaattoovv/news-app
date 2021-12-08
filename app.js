@@ -5,6 +5,7 @@ const path = require('path');
 const PORT = 3000;
 
 const server = http.createServer((req, res) => {
+    console.log('Server request');
     res.setHeader('Content-Type', 'text-html');
 
     const createPath = (page) => {
