@@ -7,7 +7,7 @@ const {
     getPosts,
     getAddPost,
     addPost
-} = require("../controllers/post-controllers");
+} = require("../controllers/post-controller");
 const router = express.Router();
 
 router.get('/posts/:id', getPost);
