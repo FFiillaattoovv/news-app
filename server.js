@@ -1,4 +1,5 @@
 const express = require('express');
+const chalk = require('chalk');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
@@ -6,6 +7,9 @@ const postRoutes = require('./routes/post-routes');
 const postApiRoutes = require('./routes/api-post-routes');
 const contactRoutes = require('./routes/contact-routes');
 const createPath = require("./helpers/create-path");
+
+const errorMsg = chalk.bgKeyword('black').redBright;
+const successMsg = chalk.bgKeyword('green').black;
 
 const app = express();
 
@@ -16,11 +20,11 @@ const db = 'mongodb+srv://Petrov:007Database@cluster0.bydz4.mongodb.net/news-app
 
 mongoose
     .connect(db)
-    .then(() => console.log('Connected to DB'))
-    .catch(err => console.log(err));
+    .then(() => console.log(successMsg('Connected to DB')))
+    .catch(err => console.log(errorMsg(err)));
 
 app.listen(PORT, 'localhost', (error) => {
-    error ? console.log(error) : console.log(`Listening port ${PORT}`);
+    error ? console.log(errorMsg(error)) : console.log(successMsg(`Listening port ${PORT}`));
 });
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
