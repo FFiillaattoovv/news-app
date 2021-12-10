@@ -32,5 +32,8 @@
     "method-override": "^3.0.0",
     "mongoose": "^6.1.0",
     "morgan": "^1.10.0"
+  },
+  "engines": {
+    "node": "16.13.0"
   }
 }
